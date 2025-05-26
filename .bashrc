@@ -35,3 +35,5 @@ done
 if [ -f ~/.bashrc_custom ]; then
     source ~/.bashrc_custom
 fi
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+export LIBVIRT_DEFAULT_URI="qemu:///system"

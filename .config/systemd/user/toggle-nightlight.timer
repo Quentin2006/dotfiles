@@ -1,0 +1,11 @@
+[Unit]
+Description=Run my script daily at 7:30 AM and 7:30 PM
+
+[Timer]
+OnCalendar=*-*-* 07:30:00
+OnCalendar=*-*-* 19:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
