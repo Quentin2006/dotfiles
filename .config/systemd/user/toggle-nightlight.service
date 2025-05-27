@@ -1,9 +1,0 @@
-[Unit]
-Description=Toggle Nightlight Script
-
-[Service]
-Type=oneshot
-ExecStart=/home/qscheetz/.config/hypr/scripts/hyprshade.sh
-
-[Install]
-WantedBy=multi-user.target
