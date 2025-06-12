@@ -1,0 +1,21 @@
+# Ignore specific files
+.config/hypr/conf/monitor.conf
+.config/hypr/hypridle.conf
+
+# Ignore colors.* files anywhere
+**/colors.*
+
+# Ignore Ax-Shell entirely
+.config/Ax-Shell/
+
+# Ignore kitty config completely
+.config/kitty/
+
+# If this nested config is being tracked for some reason, ignore it too
+.config/dotfiles/.config/kitty/
+
+# Optional: ignore other machine-specific GUI stuff
+.config/qt6ct/colors/
+
+# Ignore machine-specific Oh My Posh theme
+.config/ohmyposh/EDM115-newline.omp.json
