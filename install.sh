@@ -71,6 +71,7 @@ done
 installed=0
 skipped=0
 backed=0
+missing=0
 
 link_item() {
 	local p="$1"
@@ -79,8 +80,13 @@ link_item() {
 	local rel resolved
 
 	if [ ! -e "$src" ] && [ ! -L "$src" ]; then
-		echo "error: $src missing from dotfiles (manifest drift)" >&2
-		exit 1
+		# A manifest entry with nothing behind it is drift (typo, or a path
+		# that is not Syncthing-transported to this machine). Warn and carry on
+		# rather than abort: the rest of the set is still worth linking, and a
+		# hard exit here left a fresh machine with a half-installed $HOME.
+		echo "warn  $p (missing from dotfiles -- manifest drift, skipped)"
+		missing=$((missing + 1))
+		return
 	fi
 	mkdir -p "$(dirname "$dst")"
 
@@ -264,4 +270,11 @@ done
 
 [ "$ADA_MOUNT" -eq 1 ] && install_ada_mount
 
-echo "done: $installed linked, $skipped skipped, $backed backed up"
+if [ "$missing" -gt 0 ]; then
+	if [ "$missing" -eq 1 ]; then
+		echo "note  1 manifest entry had nothing in dotfiles and was skipped"
+	else
+		echo "note  $missing manifest entries had nothing in dotfiles and were skipped"
+	fi
+fi
+echo "done: $installed linked, $skipped skipped, $backed backed up, $missing missing"
