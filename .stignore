@@ -1,0 +1,48 @@
+# Syncthing ignore patterns for the dotfiles folder.
+#
+# This is the transport that actually moves this repo between machines, so
+# anything excluded from .gitignore for "runtime, not config" reasons must be
+# excluded here too -- otherwise it gets replicated to every peer device.
+#
+# Syncthing syncs this file itself, so all machines apply the same rules.
+
+# --- pi agent: secrets and runtime state -------------------------------
+# auth.json holds live provider API keys (opencode-go, opencode). Local only.
+.pi/agent/auth.json
+
+# Regenerable model metadata cache.
+.pi/agent/models-store.json
+
+# Conversation transcripts (.pi/agent/sessions/) are intentionally NOT ignored.
+# They replicate so /resume works on every device. Two caveats:
+#   * Session dirs are named after the absolute cwd (--home-<user>-Work--), so
+#     a device with a different username or layout will not find them.
+#   * Do not resume the same session on two devices at the same time; Syncthing
+#     will create *.sync-conflict-*.jsonl copies of the transcript.
+
+# Written by herdr at runtime, not hand-authored.
+.pi/agent/extensions/herdr-agent-state.ts
+
+# --- career-ops: build artifacts --------------------------------------
+# career-ops is a nested git repo. Its OWN .gitignore excludes these, but
+# Syncthing does not read nested .gitignore files, so without these rules
+# ~708M of regenerable output was being replicated to every peer device.
+# Rebuild with: npm ci  (and `next build` for web/.next)
+node_modules/
+.next/
+.next*/
+**/node_modules/
+
+# --- generic -----------------------------------------------------------
+# Backup files left by install.sh conflict handling.
+*.installbak
+*.stowbak
+*.pre-agent-cleanup.bak
+*.bak
+*.bak.*
+**/*.bak
+**/*.bak.*
+
+# Version control / editor cruft.
+.git/
+.DS_Store

@@ -1,0 +1,15 @@
+{
+  "theme": "omarchy-system",
+  "lastChangelogVersion": "1.0.1",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "space-bunny-free",
+  "tuiMode": "fullscreen",
+  "hideThinkingBlock": false,
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-lens",
+    "npm:pi-subagents",
+    "npm:@juicesharp/rpiv-ask-user-question"
+  ],
+  "defaultThinkingLevel": "max"
+}

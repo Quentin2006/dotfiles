@@ -1,0 +1,85 @@
+{
+  "bar": {
+    "centerAnchor": "tmn73.calendar",
+    "layout": {
+      "center": [
+        {
+          "id": "omarchy.system-update"
+        },
+        {
+          "id": "qscheetz.github-contributions"
+        },
+        {
+          "birthYear": 2006,
+          "format": "dddd h:mm AP",
+          "hiddenCalendars": [
+            "en.usa#holiday@group.v.calendar.google.com"
+          ],
+          "id": "tmn73.calendar",
+          "lifeExpectancy": 100,
+          "showWorkingLocation": false,
+          "showYearProgress": false,
+          "weekStartDay": "sunday"
+        },
+        {
+          "id": "mryll.meteobar",
+          "location": "Gresham, Oregon",
+          "units": "imperial"
+        }
+      ],
+      "left": [
+        {
+          "historySamples": 120,
+          "id": "stappmus.activity-monitor",
+          "openExpanded": false,
+          "samplingSpeed": "Efficient"
+        },
+        {
+          "id": "omarchy.workspaces"
+        },
+        {
+          "id": "qscheetz.syncthing-status"
+        }
+      ],
+      "right": [
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "qscheetz.ai-blockout"
+        },
+        {
+          "id": "io.github.thisisgm.omapods"
+        },
+        {
+          "id": "omarchy.audio"
+        },
+        {
+          "id": "omarchy.bluetooth"
+        },
+        {
+          "id": "omarchy.tailscale"
+        },
+        {
+          "id": "omarchy.network"
+        },
+        {
+          "id": "omarchy.power"
+        }
+      ]
+    },
+    "position": "top",
+    "transparent": false
+  },
+  "disabledPlugins": [],
+  "idle": {
+    "lock": 100000000000000000000,
+    "screensaver": 300
+  },
+  "plugins": [
+    {
+      "id": "io.github.ilkaydnc.omargb"
+    }
+  ],
+  "version": 1
+}

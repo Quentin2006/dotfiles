@@ -1,0 +1,179 @@
+# ──────────────────────────────────────
+# Secrets / Credentials
+# ──────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+id_ecdsa
+*.pub
+!*.pub.example
+config.local
+*.local
+*.secret
+secrets/
+credentials/
+
+# ──────────────────────────────────────
+# Syncthing
+# ──────────────────────────────────────
+.stfolder
+.stversions/
+
+# ──────────────────────────────────────
+# Dependencies / Build artifacts
+# ──────────────────────────────────────
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+*.o
+*.so
+*.dylib
+*.exe
+
+# ──────────────────────────────────────
+# Sensitive / machine-specific
+# ──────────────────────────────────────
+.gnupg/
+.pki/
+.ssh/
+
+# ──────────────────────────────────────
+# Application runtime data (auto-generated)
+# ──────────────────────────────────────
+.local/
+!.local/share/
+!.local/share/tmux/
+!.local/share/applications/
+.local/share/applications/mimeinfo.cache
+!.local/share/icons/
+!.local/share/icons/**
+
+# ──────────────────────────────────────
+# Syncthing-synced, git-unmanaged (transport is Syncthing, not git)
+# ──────────────────────────────────────
+.bash_history
+.config/chromium-flags.conf
+
+# ──────────────────────────────────────
+# OS / editor / cache files
+# ──────────────────────────────────────
+.DS_Store
+*~
+*.swp
+*.swo
+.cache/
+Trash/
+
+# ──────────────────────────────────────
+# Backup / auto-generated files
+# ──────────────────────────────────────
+*.backup-*
+*.log
+
+# ──────────────────────────────────────
+# Logs / databases / large binaries
+# ──────────────────────────────────────
+*.db
+*.db-shm
+*.db-wal
+*.sync-conflict-*
+
+# ──────────────────────────────────────
+# Prevent nested git repos
+# ──────────────────────────────────────
+**/.git/
+
+# ──────────────────────────────────────
+# Harness / machine-specific
+# ──────────────────────────────────────
+.agents/.skill-lock.json
+
+# Syncthing conflict files
+*.sync-conflict-*
+
+# ──────────────────────────────────────
+# tmux: tpm plugin clones (installed at runtime)
+# ──────────────────────────────────────
+.config/tmux/plugins/
+
+# ──────────────────────────────────────
+# herdr: runtime state written into its config dir
+# (config.toml is user config and IS tracked)
+# ──────────────────────────────────────
+.config/herdr/herdr-server.log
+.config/herdr/herdr-client.log
+.config/herdr/herdr.sock
+.config/herdr/herdr-client.sock
+.config/herdr/session.json
+.config/herdr/.plugins.lock
+
+# ──────────────────────────────────────
+# pi: agent runtime data (regenerated; not user config)
+# Real config (settings.json, themes/, skills/) IS managed and synced.
+# ──────────────────────────────────────
+# Live provider API keys -- never leave this machine.
+.pi/agent/auth.json
+# MCP server credentials (OAuth tokens for connected servers). Distinct file
+# from auth.json, and it was NOT covered by that rule.
+.pi/agent/mcp-auth.json
+# Regenerable model metadata cache.
+.pi/agent/models-store.json
+# NOTE: .pi/agent/sessions/ (transcripts) is synced by Syncthing on purpose
+# (see .stignore) so /resume can follow you across devices, but it is NOT
+# tracked in git: multi-megabyte conversation logs that churn on every run,
+# and they are private. Syncthing remains the transport for these.
+.pi/agent/sessions/
+# Written by herdr at runtime, not hand-authored.
+.pi/agent/extensions/herdr-agent-state.ts
+
+# ──────────────────────────────────────
+# bwtool: the master password lives in .config/bwtool/secrets.env so it travels
+# to the user's other (trusted) machines — but it is never committed here.
+# The per-machine session cache is runtime state and must not travel at all.
+# ──────────────────────────────────────
+.config/bwtool/secrets.env
+**/secrets.env
+**/session.json
+
+# ──────────────────────────────────────
+# Nested git repositories. These are cloned artifacts, not config: tpm and the
+# omarchy plugin manager recreate them on demand, and career-ops is its own
+# project with its own repo. Recording them here would store gitlinks (mode
+# 160000) that clone as EMPTY directories for anyone else.
+# NOTE: these patterns must start at column 0. Leading whitespace is not
+# stripped by gitignore, so an indented rule silently matches nothing.
+# ──────────────────────────────────────
+.config/tmux/plugins/
+.config/omarchy/plugins/
+career-ops/
+
+# ──────────────────────────────────────
+# Public-repo exclusions. This repo is published, so anything that identifies
+# the author or maps the private homelab stays out. All of these remain on disk
+# and still sync via Syncthing -- they are simply not versioned here.
+#
+# .agents/skills/ carries the password-vault URL, account email and userId,
+# plus the storage-server topology: pool names, service inventory, LAN and
+# Tailscale IPs, and CPU/GPU/driver details.
+# .XCompose holds real name, email, phone number and home address.
+# resume/ is personal by definition.
+# .pi/agent/missions/ and run-history.jsonl are runtime state, and mission
+# summaries embed real research output that describes private hardware.
+# ──────────────────────────────────────
+.agents/
+.XCompose
+resume/
+.pi/agent/missions/
+.pi/agent/run-history.jsonl
+*.pdf
+*.PDF
+
+# ──────────────────────────────────────
