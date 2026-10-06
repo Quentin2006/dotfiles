@@ -176,4 +176,13 @@ resume/
 *.pdf
 *.PDF
 
+# opencode: the config is versioned, but the session DB, prompt history and
+# credentials are private and machine-heavy. They live under .local/ (already
+# git-ignored) and are transported by Syncthing only, never committed.
+.config/opencode/node_modules/
+.config/opencode/package.json
+.config/opencode/package-lock.json
+.local/share/opencode/
+.local/state/opencode/
+
 # ──────────────────────────────────────

@@ -18,6 +18,7 @@ alias lla='ls -la'
 alias v='nvim'
 alias p3='python3'
 alias lg='lazygit'
+alias opencode='opencode --auto'
 
 if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
   tmux attach-session -t Work || tmux new-session -s Work

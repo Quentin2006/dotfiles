@@ -48,6 +48,8 @@ MANIFEST="
 .local/bin/bwtool
 .local/share/applications
 .local/share/icons
+.local/share/opencode
+.local/state/opencode
 "
 
 # Syncthing-transported paths inside .config that must NOT be linked.
